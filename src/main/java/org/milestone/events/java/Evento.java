@@ -88,8 +88,7 @@ public class Evento {
 	 */
 	@Override
 	public String toString() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String formattedDate = this.date.format(formatter);		
+		String formattedDate = this.date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));		
 		return String.format("%s - %s", formattedDate, this.title);
 	}
 }
