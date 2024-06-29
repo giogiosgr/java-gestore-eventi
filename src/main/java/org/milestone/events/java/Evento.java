@@ -5,11 +5,18 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento {
     
+	// variabili di istanza
 	private String title;
 	private LocalDate date;
 	private final int totalSeats;
 	private int bookedSeats;
 	
+	/**
+	 * Costruttore
+	 * @param title
+	 * @param date
+	 * @param seats
+	 */
 	public Evento(String title, LocalDate date, int seats) {
 		this.title = title;
 		this.date = date;
