@@ -64,5 +64,4 @@ public class Concerto extends Evento {
 	public String toString() {
 	    return String.format("%s ore %s - %s - %s", getFormattedDate(), getFormattedTime(), getTitle(), getFormattedPrice());
 	}
-
 }
