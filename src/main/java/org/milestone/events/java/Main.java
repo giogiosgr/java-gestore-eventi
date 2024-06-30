@@ -12,7 +12,7 @@ public class Main {
 		
 		// dichiarazione variabili e oggetti per la successiva istanza e utilizzo della classe Evento
 		String newTitle;
-        int newSeats = 0;	
+                int newSeats = 0;	
 		String newDate;
 		int modifiedSeats = 0;
 		Scanner sc = new Scanner(System.in);
