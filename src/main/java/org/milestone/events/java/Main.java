@@ -22,6 +22,27 @@ public class Main {
 		 */
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate parsedDate = LocalDate.now();
+		
+		
+		// ----- WIP PROVE PROGRAMMAEVENTI -----
+		
+		ProgrammaEventi newProgram = new ProgrammaEventi("programmone");
+		
+		newProgram.addEvent(new Evento("evento1", LocalDate.parse("2028-12-11"), 100));
+		newProgram.addEvent(new Evento("evento2", LocalDate.parse("2025-12-12"), 100));
+		newProgram.addEvent(new Evento("evento3", LocalDate.parse("2027-01-02"), 100));
+		newProgram.addEvent(new Evento("evento4", LocalDate.parse("2025-12-12"), 100));
+		
+		System.out.println(newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));
+		
+		
+		
+		
+		
+		// -------------------------------------
+		
+		
+		
 		/* serie di input per la creazione del nuovo evento,
 		 * con cicli per gestione delle eccezioni per l'inserimento corretto della data e del numero di posti
 		 */
@@ -54,7 +75,7 @@ public class Main {
 		} while (error);
 		// istanza di un nuovo oggetto di classe Evento
 		Evento newEvent = new Evento(newTitle, parsedDate, newSeats);
-		System.out.println("\nCreato il seguente evento: " + newEvent.toString()); // stampa informazioni evento
+		System.out.println("\nCreato il seguente evento: " + newEvent); // stampa informazioni evento
         /* richieste di input per prenotazione o cancellazione, 
          * con serie di cicli, con controllo delle scelte dell'utente e validità dell'input
          */
