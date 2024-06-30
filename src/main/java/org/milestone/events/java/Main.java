@@ -12,7 +12,7 @@ public class Main {
 		
 		// dichiarazione variabili e oggetti per la successiva istanza e utilizzo della classe Evento
 		String newTitle;
-                int newSeats = 0;	
+        int newSeats = 0;
 		String newDate;
 		int modifiedSeats = 0;
 		Scanner sc = new Scanner(System.in);
@@ -25,20 +25,6 @@ public class Main {
 		/* serie di input per la creazione del nuovo evento,
 		 * con cicli per gestione delle eccezioni per l'inserimento corretto della data e del numero di posti
 		 */
-		
-		// ----- WIP ------------
-		
-		 // assegnazione variabili per successiva istanza della classe Concerto
-       
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
-        Concerto newConcert = new Concerto("Concertone", parsedDate, 100, parsedTime, 39.99);
-      
-        
-        System.out.println(newConcert.getFormattedTime());
-		
-		// -----------
-		
 		System.out.println("Inserire il nome dell'evento: ");
 		newTitle = sc.nextLine();
 		boolean error;
@@ -60,7 +46,7 @@ public class Main {
 		    System.out.println("\nInserire il numero di posti disponibili: ");
 			try {
 				newSeats = sc.nextInt();
-			} catch (Exception e) {			
+			} catch (Exception e) {
 				System.out.println("Formato del numero non valido!");
 				error = true;
 			}
@@ -83,7 +69,7 @@ public class Main {
 		            if (answer.equals("c")) System.out.println("\nInserire il numero di posti da cancellare dalla prenotazione: ");
 		     	    try {
 				        modifiedSeats = sc.nextInt();
-			        } catch (Exception e) {			
+			        } catch (Exception e) {
 				        System.out.println("Formato del numero non valido!");
 				        error = true;
 			        }
@@ -96,10 +82,13 @@ public class Main {
 		    }	    
 		} while(answer.equals("p") || answer.equals("c"));
         sc.close();    		
-        // test su altri metodi
+        // test su altri metodi di Evento
         System.out.println("\n" + newEvent.book());
         System.out.println("\n" + newEvent.cancel());
-       
-        
+   	    // assegnazione variabili per successiva istanza e utilizzo della classe Concerto
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
+        Concerto newConcert = new Concerto("Concertone", parsedDate, 100, parsedTime, 39.90);
+        System.out.println("\nRiepilogo concerto: \n" + newConcert.toString());    
 	}	
 }
