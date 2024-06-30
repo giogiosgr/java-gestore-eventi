@@ -74,7 +74,7 @@ public class Main {
          */
 		String answer;			
 		do {
-			System.out.println("\nPrenotare o cancellare nuovi posti? (p per prenotare, c per cancellare, altro tasto per continuare): ");
+			System.out.println("\nPrenotare o cancellare posti? (p per prenotare, c per cancellare, altro tasto per continuare): ");
 			answer = sc.nextLine().toLowerCase();
 	   	    if (answer.equals("p") || answer.equals("c")) {
 	   	    	do {
