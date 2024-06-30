@@ -25,7 +25,7 @@ public class Evento {
 		if (totalSeats <= 0) {
 			System.out.println("Attenzione, l'evento è stato creato senza posti disponibili");
 			this.totalSeats = 0;
-		} else this.totalSeats = totalSeats;
+		} else this.totalSeats = totalSeats;	
 		this.bookedSeats = 0;
 	}
 	
@@ -52,6 +52,14 @@ public class Evento {
 	
 	public int getBookedSeats() {
 		return this.bookedSeats;
+	}
+	
+	/**
+	 * Metodo che restituisce la data formattata con l'ausilio di un oggetto formatter
+	 * @return String
+	 */
+	public String getFormattedDate () {
+		return this.date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));	
 	}
 	
 	/**
@@ -91,13 +99,12 @@ public class Evento {
 	}
 	
 	/**
-	 * Oveddire del metodo toString,
-	 * Restituisce la data formattata tramite un oggetto formatter, più il titolo
+	 * Override del metodo toString,
+	 * Restituisce la data formattata tramite il metodo dedicato, più il titolo
 	 */
 	@Override
-	public String toString() {
-		String formattedDate = this.date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));		
-		return String.format("%s - %s", formattedDate, this.title);
+	public String toString() {	
+		return String.format("%s - %s", getFormattedDate(), this.title);
 	}
 	
 	//Overload per i metodi book e cancel
