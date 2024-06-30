@@ -54,7 +54,7 @@ public class Main {
 		// istanza di un nuovo oggetto di classe Evento
 		Evento newEvent = new Evento(newTitle, parseddDate, newSeats);
 		System.out.println("\nCreato il seguente evento: " + newEvent.toString());
-        // serie di input per prenotazione e disdetta posti dell'evento creato
+        // serie di input per prenotare e disdire posti dell'evento creato
 		
         System.out.println("\n" + newEvent.book(5));
         
