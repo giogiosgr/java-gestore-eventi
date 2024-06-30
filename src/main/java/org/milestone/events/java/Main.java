@@ -54,46 +54,32 @@ public class Main {
 		// istanza di un nuovo oggetto di classe Evento
 		Evento newEvent = new Evento(newTitle, parseddDate, newSeats);
 		System.out.println("\nCreato il seguente evento: " + newEvent.toString()); // stampa informazioni evento
-        /* serie di richieste di input per prenotazione e cancellazione, 
-         * con serie di cicli per controllo delle scelte dell'utente e validità dell'input
+        /* richieste di input per prenotazione o cancellazione, 
+         * con serie di cicli, con controllo delle scelte dell'utente e validità dell'input
          */
 		String answer;			
 		do {
-			System.out.println("\nPrenotare nuovi posti? (s per confermare, altro tasto per continuare): ");
+			System.out.println("\nPrenotare o cancellare nuovi posti? (p per prenotare, c per cancellare, altro tasto per continuare): ");
 			answer = sc.nextLine().toLowerCase();
-	   	    if (answer.equals("s")) {
+	   	    if (answer.equals("p") || answer.equals("c")) {
 	   	    	do {
 		            error = false;
-		            System.out.println("\nInserire il numero di posti da prenotare: ");
+		            if (answer.equals("p")) System.out.println("\nInserire il numero di posti da prenotare: ");
+		            if (answer.equals("c")) System.out.println("\nInserire il numero di posti da cancellare dalla prenotazione: ");
 		     	    try {
 				        modifiedSeats = sc.nextInt();
 			        } catch (Exception e) {			
 				        System.out.println("Formato del numero non valido!");
 				        error = true;
 			        }
+				    sc.nextLine();
 	   	    	} while (error);
-			    sc.nextLine();
-			    System.out.println("\n" + newEvent.book(modifiedSeats)); // stampa del risultato della prenotazione
+			    // stampa del risultato della prenotazione
+			    if (answer.equals("p")) System.out.println("\n" + newEvent.book(modifiedSeats)); 
+			    // stampa del risultato della cancellazione
+			    if (answer.equals("c")) System.out.println("\n" + newEvent.cancel(modifiedSeats)); 
 		    }	    
-		} while(answer.equals("s"));
-		do {
-			System.out.println("\nCancellare posti prenotati? (s per confermare, altro tasto per continuare): ");
-			answer = sc.nextLine().toLowerCase();
-	   	    if (answer.equals("s")) {
-	   	    	do {
-		            error = false;
-		            System.out.println("\nInserire il numero di posti da cancellare dalla prenotazione: ");
-		     	    try {
-				        modifiedSeats = sc.nextInt();
-			        } catch (Exception e) {			
-				        System.out.println("Formato del numero non valido!");
-				        error = true;
-			        }
-	   	    	} while (error);
-			    sc.nextLine();
-			    System.out.println("\n" + newEvent.cancel(modifiedSeats)); // stampa del risultato della cancellazione
-		    }	    
-		} while(answer.equals("s"));
+		} while(answer.equals("p") || answer.equals("c"));
         sc.close();    		
         // test su altri metodi
         System.out.println("\n" + newEvent.book());
