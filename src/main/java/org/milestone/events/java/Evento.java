@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Evento {
-    
 	// variabili di istanza
 	private String title;
 	private LocalDate date;
@@ -45,12 +44,12 @@ public class Evento {
 		this.date = date;
 	}
 	
-	public int getSeats() {
+	public int getTotalSeats() {
 		return this.totalSeats;
 	}
 	
-	public int getbooked() {
-		return bookedSeats;
+	public int getBookedSeats() {
+		return this.bookedSeats;
 	}
 	
 	/**
@@ -80,12 +79,12 @@ public class Evento {
 	 */
 	public String cancel() {
 		if (this.bookedSeats == 0) {
-			return "Attenzione, non ci sono prenotazioni da disdire";
+			return "Attenzione, non ci sono posti prenotati da disdire";
 		} else if (LocalDate.now().isAfter(this.date)) {
 			return "Attenzione, la data dell'evento è già passata";
 		} else {
 			this.bookedSeats++;
-			return "Prenotazione cancellata con successo";
+			return "Prenotazione posto cancellata con successo";
 		}
 	}
 	
@@ -97,5 +96,31 @@ public class Evento {
 	public String toString() {
 		String formattedDate = this.date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));		
 		return String.format("%s - %s", formattedDate, this.title);
+	}
+	
+	//Overload per i metodi book e cancel
+	public String book(int n) {
+		if ((this.bookedSeats + n) > this.totalSeats) {
+			return String.format("Attenzione, non è possibile prenotare %d posti, %d posti liberi rimasti",
+					n, this.totalSeats - this.bookedSeats); 
+		} else if (LocalDate.now().isAfter(this.date)) {
+			return "Attenzione, la data dell'evento è già passata";
+		} else {
+			this.bookedSeats += n;
+			return String.format("Prenotati con successo %d posti, rimangono %d posti disponibili",
+					n, this.totalSeats - this.bookedSeats); 
+		}
+	}
+		
+	public String cancel(int n) {
+		if ((this.bookedSeats - n) < 0) {
+			return String.format("Attenzione, non ci sono %d posti prenotati da disdire", n); 
+		} else if (LocalDate.now().isAfter(this.date)) {
+			return "Attenzione, la data dell'evento è già passata";
+		} else {
+			this.bookedSeats -= n;
+			return String.format("Prenotazione di %d posti cancellata con successo, rimangono %d posti prenotati",
+					n, this.bookedSeats); 
+		}			
 	}
 }
