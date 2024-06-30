@@ -46,7 +46,6 @@ public class Concerto extends Evento {
 	@Override
 	public String toString() {
 		String formattedPrice = String.format("%.2f€", this.price);
-	 
 		
 		return formattedPrice;
 	}
