@@ -107,7 +107,7 @@ public class Evento {
 		return String.format("%s - %s", getFormattedDate(), this.title);
 	}
 	
-	//Overload per i metodi book e cancel
+	//Overload per i metodi book e cancel, per prenotare/cancellare n posti
 	public String book(int n) {
 		if (LocalDate.now().isAfter(this.date)) {
 			return "Attenzione, la data dell'evento è già passata";
