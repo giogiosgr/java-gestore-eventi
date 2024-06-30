@@ -1,6 +1,7 @@
 package org.milestone.events.java;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
@@ -19,11 +20,25 @@ public class Main {
 		 * nel formato desiderato.
 		 * quindi successiva istanza di un oggetto LocalDate, inizialmente con la data corrente
 		 */
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate parseddDate = LocalDate.now();
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate parsedDate = LocalDate.now();
 		/* serie di input per la creazione del nuovo evento,
 		 * con cicli per gestione delle eccezioni per l'inserimento corretto della data e del numero di posti
 		 */
+		
+		// ----- WIP ------------
+		
+		 // assegnazione variabili per successiva istanza della classe Concerto
+       
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
+        Concerto newConcert = new Concerto("Concertone", parsedDate, 100, parsedTime, 39.99);
+      
+        
+        System.out.println(newConcert.getFormattedTime());
+		
+		// -----------
+		
 		System.out.println("Inserire il nome dell'evento: ");
 		newTitle = sc.nextLine();
 		boolean error;
@@ -33,7 +48,7 @@ public class Main {
 		    try {    	
 		    	newDate = sc.nextLine();
 		    	// assegnazione della data dalla stringa di input, dal formato determinato con formatter
-			    parseddDate = LocalDate.parse(newDate, formatter);
+			    parsedDate = LocalDate.parse(newDate, dateFormatter);
             } catch (DateTimeParseException e) {
                 System.out.println("Formato della data non valido!");
                 error = true;
@@ -52,7 +67,7 @@ public class Main {
 			sc.nextLine();
 		} while (error);
 		// istanza di un nuovo oggetto di classe Evento
-		Evento newEvent = new Evento(newTitle, parseddDate, newSeats);
+		Evento newEvent = new Evento(newTitle, parsedDate, newSeats);
 		System.out.println("\nCreato il seguente evento: " + newEvent.toString()); // stampa informazioni evento
         /* richieste di input per prenotazione o cancellazione, 
          * con serie di cicli, con controllo delle scelte dell'utente e validità dell'input
@@ -84,5 +99,7 @@ public class Main {
         // test su altri metodi
         System.out.println("\n" + newEvent.book());
         System.out.println("\n" + newEvent.cancel());
+       
+        
 	}	
 }
