@@ -14,16 +14,18 @@ public class Evento {
 	 * Costruttore
 	 * @param title
 	 * @param date
-	 * @param seats
+	 * @param totalSeats
 	 */
-	public Evento(String title, LocalDate date, int seats) {
+	public Evento(String title, LocalDate date, int totalSeats) {
 		this.title = title;
 		this.date = date;
 		// se la data attuale è superiore alla data dell'evento, stampa avviso all'utente
 		if (LocalDate.now().isAfter(this.date)) System.out.println("Attenzione, l'evento è stato creato come già passato");
-		this.totalSeats = seats;
 		// se il numero di posti istanziato è minore di 1, stampa avviso all'utente
-		if (seats <= 0) System.out.println("Attenzione, l'evento è stato creato senza posti disponibili");
+		if (totalSeats <= 0) {
+			System.out.println("Attenzione, l'evento è stato creato senza posti disponibili");
+			this.totalSeats = 0;
+		} else this.totalSeats = totalSeats;
 		this.bookedSeats = 0;
 	}
 	
@@ -63,10 +65,10 @@ public class Evento {
 	 * @return String risultato del tentativo di prenotazione
 	 */
 	public String book() {
-		if (this.bookedSeats == this.totalSeats) {
-			return "Attenzione, non ci sono più posti disponibili";
-		} else if (LocalDate.now().isAfter(this.date)) {
+		if (LocalDate.now().isAfter(this.date)) {
 			return "Attenzione, la data dell'evento è già passata";
+		} else if (this.bookedSeats == this.totalSeats) {
+			return "Attenzione, non ci sono più posti disponibili";
 		} else {
 			this.bookedSeats++;
 			return "Posto prenotato con successo";
@@ -78,10 +80,10 @@ public class Evento {
 	 * @return String risultato del tentativo di cancellazione
 	 */
 	public String cancel() {
-		if (this.bookedSeats == 0) {
-			return "Attenzione, non ci sono posti prenotati da disdire";
-		} else if (LocalDate.now().isAfter(this.date)) {
+		if (LocalDate.now().isAfter(this.date)) {
 			return "Attenzione, la data dell'evento è già passata";
+		} else if (this.bookedSeats == 0) {
+			return "Attenzione, non ci sono posti prenotati da disdire";
 		} else {
 			this.bookedSeats--;
 			return "Prenotazione posto cancellata con successo";
@@ -100,11 +102,11 @@ public class Evento {
 	
 	//Overload per i metodi book e cancel
 	public String book(int n) {
-		if (n <= 0 || (this.bookedSeats + n) > this.totalSeats) {
+		if (LocalDate.now().isAfter(this.date)) {
+			return "Attenzione, la data dell'evento è già passata";
+		} else if (n <= 0 || (this.bookedSeats + n) > this.totalSeats) {
 			return String.format("Attenzione, non è possibile prenotare %d posti, %d posti liberi rimasti",
 					n, this.totalSeats - this.bookedSeats); 
-		} else if (LocalDate.now().isAfter(this.date)) {
-			return "Attenzione, la data dell'evento è già passata";
 		} else {
 			this.bookedSeats += n;
 			return String.format("Prenotati con successo %d posti, rimangono %d posti disponibili",
@@ -113,11 +115,11 @@ public class Evento {
 	}
 		
 	public String cancel(int n) {
-		if (n <= 0 || (this.bookedSeats - n) < 0) {
+		if (LocalDate.now().isAfter(this.date)) {
+			return "Attenzione, la data dell'evento è già passata";
+		} else if (n <= 0 || (this.bookedSeats - n) < 0) {
 			return String.format("Attenzione, non è possibile cancellare la prenotazione di %d posti, %d posti prenotati rimasti",
 					n, this.bookedSeats);
-		} else if (LocalDate.now().isAfter(this.date)) {
-			return "Attenzione, la data dell'evento è già passata";
 		} else {
 			this.bookedSeats -= n;
 			return String.format("Prenotazione di %d posti cancellata con successo, rimangono %d posti disponibili",
