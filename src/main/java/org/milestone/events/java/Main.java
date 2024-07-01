@@ -33,6 +33,17 @@ public class Main {
 		
 		System.out.println(newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));
 		
+		System.out.println(newProgram.getOrderedEvents());
+		
+	//	System.out.println(newProgram.getEventsCount());
+		
+		newProgram.clearEventList();
+		
+	//	System.out.println(newProgram.getEventsCount());
+		
+		System.out.println(newProgram.getOrderedEvents());
+		
+		
 		// -------------------------------------
 		
 		// serie di input, con richiamo dei metodi dedicati all'input della data e dei numeri interi
