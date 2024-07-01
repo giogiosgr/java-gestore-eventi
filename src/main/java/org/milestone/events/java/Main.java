@@ -73,7 +73,7 @@ public class Main {
 	/**
 	 * Metodo per l'acquisizione di un oggetto LocalDate, passando la stringa della richiesta,
 	 * Poi un oggetto scanner, quindi un oggetto formatter per l'acquisizione della data nella forma richiesta,
-	 * Comprende il controllo del corretto inserimento dell'input tramite costrutto try/catch
+	 * Comprende il controllo del corretto inserimento della data tramite costrutto try/catch
 	 * @param question
 	 * @param input
 	 * @param customFormatter
@@ -98,7 +98,7 @@ public class Main {
     
 	/**
 	 * Metodo per l'acquisizione di un intero, passando la stringa della richiesta e un oggetto scanner,
-	 * Comprende il controllo del corretto inserimento dell'input tramite costrutto try/catch
+	 * Comprende il controllo del corretto inserimento dell'input
 	 * @param question
 	 * @param input
 	 * @return int
@@ -109,9 +109,9 @@ public class Main {
 		do {
 			error = false;
 			System.out.println("\n" + question);
-			try {
+			if (input.hasNextInt()) {
 				inputNumber = input.nextInt();
-			} catch (Exception e) {
+			} else {
 				System.out.println("Formato del numero non valido!");
 				error = true;    
 			}
