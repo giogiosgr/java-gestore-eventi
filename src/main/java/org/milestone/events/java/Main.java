@@ -19,7 +19,7 @@ public class Main {
 		 * quindi successiva dichiarazione di un oggetto LocalDate
 		 */
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate parsedDate;
+		LocalDate newDate;
 		
 		// ----- WIP PROVE PROGRAMMAEVENTI -----
 		
@@ -35,15 +35,15 @@ public class Main {
 		
 		// -------------------------------------
 		
-		// serie di input, con richiamo delle funzioni dedicate per input della data e dei numeri interi
+		// serie di input, con richiamo dei metodi dedicati all'input della data e dei numeri interi
 		System.out.println("Inserire il titolo dell'evento");
 		newTitle = sc.nextLine();
-		parsedDate = checkDateInput("Inserire la data nel formato gg/mm/aaaa", sc, dateFormatter);
+		newDate = checkDateInput("Inserire la data nel formato gg/mm/aaaa", sc, dateFormatter);
 		newSeats = checkIntInput("Inserire il numero di posti disponibili", sc);
 		// istanza di un nuovo oggetto di classe Evento
-		Evento newEvent = new Evento(newTitle, parsedDate, newSeats);
+		Evento newEvent = new Evento(newTitle, newDate, newSeats);
 		System.out.println("\nCreato il seguente evento: " + newEvent); // stampa informazioni evento
-        // ciclo per l'input delle prenotazioni, con richiamo alla funzione dedicata per input di interi
+        // ciclo per l'input delle prenotazioni/disdette, con richiamo al metodo dedicato all'input di interi
 		String answer;			
 		do {
 			System.out.println("\nPrenotare o cancellare posti? (p per prenotare, c per cancellare, altro tasto per continuare)");
@@ -66,7 +66,7 @@ public class Main {
    	    // assegnazione variabili per successiva istanza e utilizzo della classe Concerto
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
-        Concerto newConcert = new Concerto("Concertone", parsedDate, 100, parsedTime, 39.90);
+        Concerto newConcert = new Concerto("Concertone", newDate, 100, parsedTime, 39.90);
         System.out.println("\nRiepilogo concerto: \n" + newConcert.toString());    
 	}	
 
