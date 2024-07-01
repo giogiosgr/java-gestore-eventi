@@ -16,12 +16,32 @@ public class ProgrammaEventi {
 		this.title = title;
 		eventList = new ArrayList<Evento>();
 	}
+
+	// getters e setters
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public ArrayList<Evento> getEventList() {
+		return this.eventList;
+	}
 	
-	// metodi vari di aggiunta e restituzione
+	/**
+	 * Metodo per aggiunta di un evento alla lista
+	 * @param event
+	 */
 	public void addEvent(Evento event) {
 		this.eventList.add(event);
 	}
 	
+	/**
+	 * Metodo che restituisce la lista di tutti gli eventi con data selezionata
+	 * @param date
+	 */
 	public ArrayList<Evento> getEventsByDate(LocalDate date) {
 	    ArrayList<Evento> newList = new ArrayList<>();
 	    for (Evento x : this.eventList) {
@@ -31,5 +51,10 @@ public class ProgrammaEventi {
 	    }
 		return newList;
 	}
+
+	public String getOrderedEvents() {
+        return "ciao";
+   	}
+             
 
 }
