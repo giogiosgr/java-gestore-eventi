@@ -32,6 +32,7 @@ public class Main {
 		newProgram.addEvent(new Evento("evento2", LocalDate.parse("2025-12-12"), 100));
 		newProgram.addEvent(new Evento("evento3", LocalDate.parse("2027-01-02"), 100));
 		newProgram.addEvent(new Evento("evento4", LocalDate.parse("2025-12-12"), 100));
+		newProgram.addEvent(new Evento("evento5", LocalDate.parse("2026-06-11"), 100));
 		
 		System.out.println(newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));
 		
