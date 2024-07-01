@@ -41,6 +41,7 @@ public class ProgrammaEventi {
 	/**
 	 * Metodo che restituisce la lista di tutti gli eventi con data selezionata
 	 * @param date
+	 * @return ArrayList<Evento>
 	 */
 	public ArrayList<Evento> getEventsByDate(LocalDate date) {
 	    ArrayList<Evento> newList = new ArrayList<>();

@@ -59,6 +59,7 @@ public class Concerto extends Evento {
 	/**
 	 * Override del metodo toString,
 	 * Restituisce data e ora formattati, più titolo e prezzo formattati
+	 * @return String
 	 */
 	@Override
 	public String toString() {
