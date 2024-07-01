@@ -67,7 +67,7 @@ public class Main {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
         Concerto newConcert = new Concerto("Concertone", newDate, 100, parsedTime, 39.90);
-        System.out.println("\nRiepilogo concerto: \n" + newConcert.toString());    
+        System.out.println("\nRiepilogo concerto: \n" + newConcert);    
 	}	
 
 	/**
