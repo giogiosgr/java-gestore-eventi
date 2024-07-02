@@ -23,13 +23,13 @@ public class Evento {
 		/**
 		 *  Se la data attuale è più avanti della data dell'evento,
 		 *  Oppure se il numero di posti è minore di 1, stampa avviso all'utente   
-		 *  L'evento viene comunque istanziato con i valori scelti
+		 *  L'evento viene comunque istanziato con la data scelta, e i posti resettati a 0
 		 *  Ma i metodi restituiranno i relativi errori quando si tenta di usarli     
 		 *  A meno che i valori non vengano corretti tramite i setters                
 		 * */  
-		if (LocalDate.now().isAfter(this.date)) System.out.printf("\nAttenzione, l'evento '%s' è stato creato come già passato", this);
+		if (LocalDate.now().isAfter(this.date)) System.out.printf("\nAttenzione, l'evento '%s' è stato creato come già passato", this.title);
 		if (totalSeats <= 0) {
-			System.out.printf("\nAttenzione, l'evento '%s' è stato creato senza posti disponibili", this);
+			System.out.printf("\nAttenzione, l'evento '%s' è stato creato senza posti disponibili", this.title);
 			this.totalSeats = 0;
 		} else this.totalSeats = totalSeats;	
 		this.bookedSeats = 0;
