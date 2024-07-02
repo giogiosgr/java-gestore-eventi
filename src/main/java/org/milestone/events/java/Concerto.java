@@ -44,7 +44,7 @@ public class Concerto extends Evento {
 	/**
 	 * Metodo che restituisce il prezzo formattato in Euro
 	 * 
-	 * @return
+	 * @return String
 	 */
 	public String getFormattedPrice() {
 		return String.format("%.2f€", this.price);
