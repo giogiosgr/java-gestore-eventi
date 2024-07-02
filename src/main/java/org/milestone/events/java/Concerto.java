@@ -11,6 +11,7 @@ public class Concerto extends Evento {
 	
 	/**
 	 * Costruttore
+	 * 
 	 * @param title
 	 * @param date
 	 * @param totalSeats
@@ -42,6 +43,7 @@ public class Concerto extends Evento {
 	
 	/**
 	 * Metodo che restituisce il prezzo formattato in Euro
+	 * 
 	 * @return
 	 */
 	public String getFormattedPrice() {
@@ -50,6 +52,7 @@ public class Concerto extends Evento {
 	
 	/**
 	 * Metodo che restituisce l'ora formattata con l'ausilio di un oggetto formatter
+	 * 
 	 * @return String
 	 */
 	public String getFormattedTime() {
@@ -59,6 +62,7 @@ public class Concerto extends Evento {
 	/**
 	 * Override del metodo toString,
 	 * Restituisce data e ora formattati, più titolo e prezzo formattati
+	 * 
 	 * @return String
 	 */
 	@Override

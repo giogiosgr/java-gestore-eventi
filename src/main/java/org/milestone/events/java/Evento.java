@@ -12,6 +12,7 @@ public class Evento {
 	
 	/**
 	 * Costruttore
+	 * 
 	 * @param title
 	 * @param date
 	 * @param totalSeats
@@ -56,6 +57,7 @@ public class Evento {
 	
 	/**
 	 * Metodo che restituisce la data formattata con l'ausilio di un oggetto formatter
+	 * 
 	 * @return String
 	 */
 	public String getFormattedDate () {
@@ -63,13 +65,8 @@ public class Evento {
 	}
 	
 	/**
-	 * Metodo che aggiunge un posto tra quelli prenotati, a condizione che:
-	 * I posti non siano finiti (con re),
-	 * La data non sia passata (con stampa di messaggio dedicato)
-	 */
-	
-	/**
 	 * Metodo per l'aggiunta di un posto alla prenotazione,
+	 * 
 	 * @return String risultato del tentativo di prenotazione
 	 */
 	public String book() {
@@ -85,6 +82,7 @@ public class Evento {
 	
 	/**
 	 * Metodo per la cancellazione di una prenotazione,
+	 * 
 	 * @return String risultato del tentativo di cancellazione
 	 */
 	public String cancel() {
@@ -101,6 +99,8 @@ public class Evento {
 	/**
 	 * Override del metodo toString,
 	 * Restituisce la data formattata tramite il metodo dedicato, più il titolo
+	 * 
+	 * @return String
 	 */
 	@Override
 	public String toString() {	

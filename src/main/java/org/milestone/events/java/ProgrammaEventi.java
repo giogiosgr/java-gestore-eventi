@@ -65,7 +65,7 @@ public class ProgrammaEventi {
 	 * @return String
 	 */
 	public String getOrderedEvents() {
-		String fullProgram = ("Lista eventi di " + this.title);
+		String fullProgram = (this.title);
 		ArrayList<Evento> orderedList = new ArrayList<>(this.eventList);
 		boolean swapped;
 		do {
