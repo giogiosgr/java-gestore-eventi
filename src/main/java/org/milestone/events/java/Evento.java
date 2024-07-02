@@ -20,9 +20,13 @@ public class Evento {
 	public Evento(String title, LocalDate date, int totalSeats) {
 		this.title = title;
 		this.date = date;
-		// se la data attuale è superiore alla data dell'evento, stampa avviso all'utente
+		/**
+		 *  Se la data attuale è più avanti della data dell'evento,
+		 *  Oppure se il numero di posti è minore di 1, stampa avviso all'utente   
+		 *  L'evento viene comunque istanziato con i valori scelti, 
+		 *  Ma i metodi restituiranno i relativi errori quando si tenta di usarli                     
+		 * */  
 		if (LocalDate.now().isAfter(this.date)) System.out.printf("\nAttenzione, l'evento '%s' è stato creato come già passato", this);
-		// se il numero di posti istanziato è minore di 1, stampa avviso all'utente
 		if (totalSeats <= 0) {
 			System.out.printf("\nAttenzione, l'evento '%s' è stato creato senza posti disponibili", this);
 			this.totalSeats = 0;
