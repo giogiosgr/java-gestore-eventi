@@ -32,28 +32,28 @@ public class Main {
 		String answer;			
 		do {
 			System.out.println("\nPrenotare o cancellare posti? (p per prenotare, c per cancellare, altro tasto per continuare)");
-			answer = sc.nextLine().toLowerCase();
-	   	    if (answer.equals("p") || answer.equals("c")) {
+			answer = sc.nextLine().toLowerCase(); 
+			if (answer.equals("p") || answer.equals("c")) {
 				String message = "";
-	   	    	if (answer.equals("p")) message = "Inserire il numero di posti da prenotare";
+				if (answer.equals("p")) message = "Inserire il numero di posti da prenotare";
 				if (answer.equals("c")) message = "Inserire il numero di prenotazioni da cancellare";
-                modifiedSeats = checkIntInput(message, sc);
-			    // stampa del risultato della prenotazione
-			    if (answer.equals("p")) System.out.println("\n" + newEvent.book(modifiedSeats)); 
-			    // stampa del risultato della cancellazione
-			    if (answer.equals("c")) System.out.println("\n" + newEvent.cancel(modifiedSeats)); 
-		    }	    
-		} while(answer.equals("p") || answer.equals("c"));
-        sc.close();    		
+				modifiedSeats = checkIntInput(message, sc);
+				// stampa del risultato della prenotazione
+				if (answer.equals("p")) System.out.println("\n" + newEvent.book(modifiedSeats)); 
+				// stampa del risultato della cancellazione
+				if (answer.equals("c")) System.out.println("\n" + newEvent.cancel(modifiedSeats));     
+			}	
+		} while(answer.equals("p") || answer.equals("c")); 		
+		sc.close();   
         // test su altri metodi di Evento
         System.out.println("\n" + newEvent.book());
         System.out.println("\n" + newEvent.cancel());
-   	    // istanza e test della classe Concerto
-		System.out.println("\nCLASSE CONCERTO\n");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
-        Concerto newConcert = new Concerto("Concertone", newDate, 100, parsedTime, 39.90);
-        System.out.println("\nRiepilogo concerto: \n" + newConcert);   
+		// istanza e test della classe Concerto
+		System.out.println("\nCLASSE CONCERTO\n");    
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter); 
+		Concerto newConcert = new Concerto("Concertone", newDate, 100, parsedTime, 39.90);
+		System.out.println("\nRiepilogo concerto\n" + newConcert);
 		// istanta e test della classe ProgrammaEventi
 		System.out.println("\nCLASSE PROGRAMMAEVENTI\n");
 		ProgrammaEventi newProgram = new ProgrammaEventi("Programmone");
@@ -62,12 +62,12 @@ public class Main {
 		newProgram.addEvent(new Evento("evento3", LocalDate.parse("2027-01-02"), 100));
 		newProgram.addEvent(new Evento("evento4", LocalDate.parse("2025-12-12"), 100));
 		newProgram.addEvent(new Evento("evento5", LocalDate.parse("2026-06-11"), 100));		
-		System.out.println(newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));		
-		System.out.println(newProgram.getOrderedEvents());		
-		System.out.println(newProgram.getEventsCount());		
+		System.out.println("\nEventi in data 12/12/2025\n" + newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));		
+		System.out.println("\nLista eventi ordinata per data\n" + newProgram.getOrderedEvents());		
+		System.out.println("\nNumero di eventi\n" + newProgram.getEventsCount());		
 		newProgram.clearEventList();		
-		System.out.println(newProgram.getEventsCount());	
-		System.out.println(newProgram.getOrderedEvents()); 
+		System.out.println("\nNumero di eventi\n" + newProgram.getEventsCount());		
+		System.out.println("\nLista eventi ordinata per data\n" + newProgram.getOrderedEvents()); 
 	}	
 
 	/**
