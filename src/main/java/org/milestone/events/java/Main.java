@@ -12,15 +12,15 @@ public class Main {
 		
 		// dichiarazione variabili e oggetti per la successiva istanza e utilizzo della classe Evento
 		String newTitle;
-		int newSeats = 0;
-		int modifiedSeats = 0;
-		Scanner sc = new Scanner(System.in);
+		int newSeats;
+		int modifiedSeats;
 		/* creazione oggetto formatter per poter assegnare un valore al local date nel formato personalizzato,
 		 * quindi successiva dichiarazione di un oggetto LocalDate
 		 */
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate newDate;
 		// serie di input, con richiamo dei metodi dedicati all'input della data e dei numeri interi
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Inserire il titolo dell'evento");
 		newTitle = sc.nextLine();
 		newDate = checkDateInput("Inserire la data nel formato gg/mm/aaaa", sc, dateFormatter);
@@ -28,7 +28,7 @@ public class Main {
 		// istanza di un nuovo oggetto di classe Evento
 		Evento newEvent = new Evento(newTitle, newDate, newSeats);
 		System.out.println("\nCreato il seguente evento: " + newEvent); // stampa informazioni evento
-        // ciclo per l'input delle prenotazioni/disdette, con richiamo al metodo dedicato all'input di interi
+        // ciclo per l'input delle prenotazioni/disdette, con richiamo del metodo dedicato all'input di interi
 		String answer;			
 		do {
 			System.out.println("\nPrenotare o cancellare posti? (p per prenotare, c per cancellare, altro tasto per continuare)");
@@ -73,7 +73,7 @@ public class Main {
 	/**
 	 * Metodo per l'acquisizione di un oggetto LocalDate, passando la stringa della richiesta,
 	 * Poi un oggetto scanner, quindi un oggetto formatter per l'acquisizione della data nella forma richiesta,
-	 * Comprende il controllo del corretto inserimento della data tramite costrutto try/catch
+	 * Comprende il controllo del formato della data inserita tramite costrutto try/catch
 	 * 
 	 * @param question
 	 * @param input
@@ -99,7 +99,7 @@ public class Main {
     
 	/**
 	 * Metodo per l'acquisizione di un intero, passando la stringa della richiesta e un oggetto scanner,
-	 * Comprende il controllo del corretto inserimento dell'input
+	 * Comprende il controllo della validità dell'input
 	 * 
 	 * @param question
 	 * @param input
