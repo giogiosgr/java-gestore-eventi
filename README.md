@@ -81,7 +81,7 @@ data e ora formattata - titolo - prezzo formattato
 ##### Step 4 (Bonus opzionale)
 Creare una classe ProgrammaEventi con i seguenti attributi: 
 - titolo: String
-- eventi: List<Evento>
+- eventi: List\<Evento\>
 
 Nel costruttore valorizzare il titolo, passato come parametro, e inizializzare la lista di eventi come una nuova ArrayList
 
