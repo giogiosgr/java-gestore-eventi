@@ -20,32 +20,6 @@ public class Main {
 		 */
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate newDate;
-		
-		// ----- WIP PROVE PROGRAMMAEVENTI -----
-		
-		ProgrammaEventi newProgram = new ProgrammaEventi("programmone");
-		
-		newProgram.addEvent(new Evento("evento1", LocalDate.parse("2028-12-11"), 100));
-		newProgram.addEvent(new Evento("evento2", LocalDate.parse("2025-12-12"), 100));
-		newProgram.addEvent(new Evento("evento3", LocalDate.parse("2027-01-02"), 100));
-		newProgram.addEvent(new Evento("evento4", LocalDate.parse("2025-12-12"), 100));
-		newProgram.addEvent(new Evento("evento5", LocalDate.parse("2026-06-11"), 100));
-		
-		System.out.println(newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));
-		
-		System.out.println(newProgram.getOrderedEvents());
-		
-	//	System.out.println(newProgram.getEventsCount());
-		
-		newProgram.clearEventList();
-		
-	//	System.out.println(newProgram.getEventsCount());
-		
-		System.out.println(newProgram.getOrderedEvents());
-		
-		
-		// -------------------------------------
-		
 		// serie di input, con richiamo dei metodi dedicati all'input della data e dei numeri interi
 		System.out.println("Inserire il titolo dell'evento");
 		newTitle = sc.nextLine();
@@ -74,17 +48,31 @@ public class Main {
         // test su altri metodi di Evento
         System.out.println("\n" + newEvent.book());
         System.out.println("\n" + newEvent.cancel());
-   	    // assegnazione variabili per successiva istanza e utilizzo della classe Concerto
+   	    // istanza e test della classe Concerto
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter);
         Concerto newConcert = new Concerto("Concertone", newDate, 100, parsedTime, 39.90);
-        System.out.println("\nRiepilogo concerto: \n" + newConcert);    
+        System.out.println("\nRiepilogo concerto: \n" + newConcert);   
+		// istanta e test della classe ProgrammaEventi
+		ProgrammaEventi newProgram = new ProgrammaEventi("programmone");
+		newProgram.addEvent(new Evento("evento1", LocalDate.parse("2028-12-11"), 100));
+		newProgram.addEvent(new Evento("evento2", LocalDate.parse("2025-12-12"), 100));
+		newProgram.addEvent(new Evento("evento3", LocalDate.parse("2027-01-02"), 100));
+		newProgram.addEvent(new Evento("evento4", LocalDate.parse("2025-12-12"), 100));
+		newProgram.addEvent(new Evento("evento5", LocalDate.parse("2026-06-11"), 100));		
+		System.out.println(newProgram.getEventsByDate(LocalDate.parse("2025-12-12")));		
+		System.out.println(newProgram.getOrderedEvents());		
+		System.out.println(newProgram.getEventsCount());		
+		newProgram.clearEventList();		
+		System.out.println(newProgram.getEventsCount());	
+		System.out.println(newProgram.getOrderedEvents()); 
 	}	
 
 	/**
 	 * Metodo per l'acquisizione di un oggetto LocalDate, passando la stringa della richiesta,
 	 * Poi un oggetto scanner, quindi un oggetto formatter per l'acquisizione della data nella forma richiesta,
 	 * Comprende il controllo del corretto inserimento della data tramite costrutto try/catch
+	 * 
 	 * @param question
 	 * @param input
 	 * @param customFormatter
@@ -110,6 +98,7 @@ public class Main {
 	/**
 	 * Metodo per l'acquisizione di un intero, passando la stringa della richiesta e un oggetto scanner,
 	 * Comprende il controllo del corretto inserimento dell'input
+	 * 
 	 * @param question
 	 * @param input
 	 * @return int
