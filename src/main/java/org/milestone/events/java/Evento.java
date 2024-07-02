@@ -23,8 +23,9 @@ public class Evento {
 		/**
 		 *  Se la data attuale è più avanti della data dell'evento,
 		 *  Oppure se il numero di posti è minore di 1, stampa avviso all'utente   
-		 *  L'evento viene comunque istanziato con i valori scelti, 
-		 *  Ma i metodi restituiranno i relativi errori quando si tenta di usarli                     
+		 *  L'evento viene comunque istanziato con i valori scelti
+		 *  Ma i metodi restituiranno i relativi errori quando si tenta di usarli     
+		 *  A meno che i valori non vengano corretti tramite i setters                
 		 * */  
 		if (LocalDate.now().isAfter(this.date)) System.out.printf("\nAttenzione, l'evento '%s' è stato creato come già passato", this);
 		if (totalSeats <= 0) {
