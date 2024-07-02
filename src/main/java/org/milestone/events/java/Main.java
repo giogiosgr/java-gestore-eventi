@@ -52,7 +52,7 @@ public class Main {
 		System.out.println("\nCLASSE CONCERTO\n");    
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 		LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter); 
-		Concerto newConcert = new Concerto("Concertone", newDate, 100, parsedTime, 39.90);
+		Concerto newConcert = new Concerto("Concertone", LocalDate.parse("2025-12-12"), 100, parsedTime, 39.90);
 		System.out.println("\nRiepilogo concerto\n" + newConcert);
 		// istanta e test della classe ProgrammaEventi
 		System.out.println("\nCLASSE PROGRAMMAEVENTI\n");
