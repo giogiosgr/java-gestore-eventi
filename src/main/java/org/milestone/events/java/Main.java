@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// dichiarazione variabili e oggetti per la successiva istanza e utilizzo della classe Evento
+		// dichiarazione variabili per la successiva istanza e utilizzo della classe Evento
 		String newTitle;
 		int newSeats;
 		int modifiedSeats;
