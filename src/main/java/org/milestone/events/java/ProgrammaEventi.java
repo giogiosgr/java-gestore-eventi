@@ -8,9 +8,10 @@ public class ProgrammaEventi {
 	// variabili di istanza
 	private String title;
 	private ArrayList<Evento> eventList;
-	
+
 	/**
 	 * Costruttore
+	 * 
 	 * @param title
 	 */
 	public ProgrammaEventi(String title) {
@@ -30,33 +31,37 @@ public class ProgrammaEventi {
 	public ArrayList<Evento> getEventList() {
 		return this.eventList;
 	}
-	
+
 	/**
 	 * Metodo per aggiunta di un evento alla lista
+	 * 
 	 * @param event
 	 */
 	public void addEvent(Evento event) {
 		this.eventList.add(event);
 	}
-	
+
 	/**
 	 * Metodo che restituisce la lista di tutti gli eventi con data selezionata
+	 * 
 	 * @param date
 	 * @return ArrayList<Evento>
 	 */
 	public ArrayList<Evento> getEventsByDate(LocalDate date) {
-	    ArrayList<Evento> newList = new ArrayList<>();
-	    for (Evento x : this.eventList) {
-	    	if (x.getDate().isEqual(date)) {
-	    		newList.add(x);
-	    	}
-	    }
+		ArrayList<Evento> newList = new ArrayList<>();
+		for (Evento x : this.eventList) {
+			if (x.getDate().isEqual(date)) {
+				newList.add(x);
+			}
+		}
 		return newList;
 	}
-	
+
 	/**
 	 * Metodo che restituisce una stringa con il titolo del programma e tutti gli eventi ordinati per data,
 	 * Per l'ordinamento degli eventi, per data, è utilizzato l'algoritmo di Bubble Sort
+	 * (l'implementazione sostituisce l'utilizzo del metodo Sort)
+	 * 
 	 * @return String
 	 */
 	public String getOrderedEvents() {
@@ -65,9 +70,9 @@ public class ProgrammaEventi {
 		boolean swapped;
 		do {
 			swapped = false;
-			for (int i = 0; i < orderedList.size()-1; i++) {
-				if (orderedList.get(i).getDate().isAfter(orderedList.get(i+1).getDate())) {
-					Collections.swap(orderedList, i, i+1);
+			for (int i = 0; i < orderedList.size() - 1; i++) {
+				if (orderedList.get(i).getDate().isAfter(orderedList.get(i + 1).getDate())) {
+					Collections.swap(orderedList, i, i + 1);
 					swapped = true;
 				}
 			}
@@ -75,29 +80,35 @@ public class ProgrammaEventi {
 		for (Evento x : orderedList) {
 			fullProgram += String.format("\n%s - %s", x.getFormattedDate(), x.getTitle());
 		}
-        return fullProgram;
-   	}
-	
+		return fullProgram;
+	}
+
 	/**
 	 * Metodo che restituisce il numero di eventi nella lista
+	 * (l'implementazione sostituisce il metodo Size)
+	 * 
 	 * @return int
 	 */
 	public int getEventsCount() {
 		int count = 0;
-		int i = 0;
-		while (eventList.get(i) != null) {
-			count++;	
-		    i++;
+		boolean error = false;
+		while (!error) 
+			try {
+				this.eventList.get(count);
+				count++;
+			} catch (Exception e) {
+				error = true;
 		}
 		return count;
 	}
-	
+
 	/**
 	 * Metodo che svuota la lista
+	 * (l'implementazione sostituisce il metodo Clear)
 	 */
 	public void clearEventList() {
 		while (this.eventList.size() > 0) {
-			eventList.remove(0);	
+			eventList.remove(0);
 		}
 	}
 }
