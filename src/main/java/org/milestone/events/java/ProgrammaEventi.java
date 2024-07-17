@@ -60,7 +60,6 @@ public class ProgrammaEventi {
 	/**
 	 * Metodo che restituisce una stringa con il titolo del programma e tutti gli eventi ordinati per data,
 	 * Per l'ordinamento degli eventi, per data, è utilizzato l'algoritmo di Bubble Sort
-	 * (l'implementazione sostituisce l'utilizzo del metodo Sort)
 	 * 
 	 * @return String
 	 */
@@ -85,30 +84,17 @@ public class ProgrammaEventi {
 
 	/**
 	 * Metodo che restituisce il numero di eventi nella lista
-	 * (l'implementazione sostituisce il metodo Size)
 	 * 
 	 * @return int
 	 */
 	public int getEventsCount() {
-		int count = 0;
-		boolean error = false;
-		while (!error) 
-			try {
-				this.eventList.get(count);
-				count++;
-			} catch (Exception e) {
-				error = true;
-		}
-		return count;
+		return this.eventList.size();
 	}
 
 	/**
 	 * Metodo che svuota la lista
-	 * (l'implementazione sostituisce il metodo Clear)
 	 */
 	public void clearEventList() {
-		while (this.eventList.size() > 0) {
-			eventList.remove(0);
-		}
+		eventList.clear();
 	}
 }

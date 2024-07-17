@@ -14,20 +14,24 @@ public class Main {
 		String newTitle;
 		int newSeats;
 		int modifiedSeats;
+		
 		/* creazione oggetto formatter per poter assegnare un valore al local date nel formato personalizzato,
 		 * quindi successiva dichiarazione di un oggetto LocalDate
 		 */
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate newDate;
+		
 		// serie di input, con richiamo dei metodi dedicati all'input della data e dei numeri interi
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Inserire il titolo dell'evento");
 		newTitle = sc.nextLine();
-		newDate = checkDateInput("Inserire la data nel formato gg/mm/aaaa", sc, dateFormatter);
-		newSeats = checkIntInput("Inserire il numero di posti disponibili", sc);
+		newDate = getValidDate("Inserire la data nel formato gg/mm/aaaa", sc, dateFormatter);
+		newSeats = getValidInt("Inserire il numero di posti disponibili", sc);
+		
 		// istanza di un nuovo oggetto di classe Evento
 		Evento newEvent = new Evento(newTitle, newDate, newSeats);
 		System.out.println("\nCreato il seguente evento: " + newEvent); // stampa informazioni evento
+		
         // ciclo per l'input delle prenotazioni/disdette, con richiamo del metodo dedicato all'input di interi
 		String answer;			
 		do {
@@ -37,7 +41,7 @@ public class Main {
 				String message = "";
 				if (answer.equals("p")) message = "Inserire il numero di posti da prenotare";
 				if (answer.equals("c")) message = "Inserire il numero di prenotazioni da cancellare";
-				modifiedSeats = checkIntInput(message, sc);
+				modifiedSeats = getValidInt(message, sc);
 				// stampa del risultato della prenotazione
 				if (answer.equals("p")) System.out.println("\n" + newEvent.book(modifiedSeats)); 
 				// stampa del risultato della cancellazione
@@ -45,16 +49,19 @@ public class Main {
 			}	
 		} while(answer.equals("p") || answer.equals("c")); 		
 		sc.close();   
+		
         // test su altri metodi di Evento
         System.out.println("\n" + newEvent.book());
         System.out.println("\n" + newEvent.cancel());
+        
 		// istanza e test della classe Concerto
-		System.out.println("\nCLASSE CONCERTO\n");    
-		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-		LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter); 
-		Concerto newConcert = new Concerto("Concertone", LocalDate.parse("2025-12-12"), 100, parsedTime, 39.90);
+		System.out.println("\nCLASSE CONCERTO\n");   	
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");	
+		LocalTime parsedTime = LocalTime.parse("20:30", timeFormatter); 	
+		Concerto newConcert = new Concerto("Concertone", LocalDate.parse("2025-12-12"), 100, parsedTime, 39.90);	
 		System.out.println("\nRiepilogo concerto\n" + newConcert);
-		// istanta e test della classe ProgrammaEventi
+		
+		// istanza e test della classe ProgrammaEventi
 		System.out.println("\nCLASSE PROGRAMMAEVENTI\n");
 		ProgrammaEventi newProgram = new ProgrammaEventi("Programmone");
 		newProgram.addEvent(new Evento("evento1", LocalDate.parse("2028-12-11"), 100));
@@ -80,7 +87,8 @@ public class Main {
 	 * @param customFormatter
 	 * @return LocalDate
 	 */
-	public static LocalDate checkDateInput(String question, Scanner input, DateTimeFormatter customFormatter) {
+	
+	public static LocalDate getValidDate(String question, Scanner input, DateTimeFormatter customFormatter) {
 		LocalDate inputDate = LocalDate.now();
 		boolean error;
 		do {
@@ -105,7 +113,7 @@ public class Main {
 	 * @param input
 	 * @return int
 	 */
-    public static int checkIntInput(String question, Scanner input) {
+    public static int getValidInt(String question, Scanner input) {
 		int inputNumber = 0;
 		boolean error;
 		do {
