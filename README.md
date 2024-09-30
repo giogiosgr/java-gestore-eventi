@@ -1,4 +1,4 @@
-# BEPT - Milestone 2
+# BEPT#2 - Milestone 2
 ## Gestore Eventi
 
 ### Nome repo: java-gestore-eventi
